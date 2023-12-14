@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('membros', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
 
@@ -26,9 +26,14 @@ return new class extends Migration
             $table->string('naturalidade', 35);
             $table->char('uf', 2);
 
-            $table->string('cert_nascimento_url', 125);
-            $table->string('doc_image_url', 125);       
-            $table->string('foto_url', 125)->nullable();
+            $table->unsignedBigInteger('file_cert_nascimento');
+            $table->foreign('file_cert_nascimento')->references('id')->on('files');
+
+            $table->unsignedBigInteger('file_doc_image');       
+            $table->foreign('file_doc_image')->references('id')->on('files');
+
+            $table->unsignedBigInteger('file_foto');
+            $table->foreign('file_foto')->references('id')->on('files');
 
             $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users');
@@ -38,6 +43,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('congregacao_id');
             $table->foreign('congregacao_id')->references('id')->on('congregacoes');
+
+            $table->unsignedBigInteger('situacao_id');
+            $table->foreign('situacao_id')->references('id')->on('situacoes');
 
             $table->timestamps();
             $table->softDeletes();

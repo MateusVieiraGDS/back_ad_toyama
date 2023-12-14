@@ -22,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -62,5 +63,11 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+
+    public function Membro()
+    {
+        return $this->hasOne(Membro::class, 'user_id');
     }
 }

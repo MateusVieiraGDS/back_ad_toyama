@@ -19,8 +19,11 @@ return new class extends Migration
             $table->date('data_batismo');
             $table->string('ministerio', '75')->nullable();
 
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('file_cert_batismo')->nullable();
+            $table->foreign('file_cert_batismo')->references('id')->on('files');
+
+            $table->unsignedBigInteger('membro_id')->unique();
+            $table->foreign('membro_id')->references('id')->on('membros');
 
             $table->timestamps();
             $table->softDeletes();

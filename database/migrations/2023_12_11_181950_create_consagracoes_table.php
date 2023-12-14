@@ -13,20 +13,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enderecos', function (Blueprint $table) {
+        Schema::create('consagracoes', function (Blueprint $table) {
             $table->id();
-
-            $table->string('rua', 125);
-            $table->integer('numero');
-            $table->string('bairro', 125);
-            $table->string('cidade', 125);
-            $table->char('uf', 2);
-            $table->string('complemento', 125);
-            $table->char('cep', 8);
+            $table->date('data_consagracao');
+            $table->string('ministerio', 75)->nullable();
 
             $table->unsignedBigInteger('membro_id');
             $table->foreign('membro_id')->references('id')->on('membros');
 
+            $table->unsignedBigInteger('cargo_id');
+            $table->foreign('cargo_id')->references('id')->on('cargos');            
+
+            $table->unsignedBigInteger('file_cert_consagracao')->nullable();
+            $table->foreign('file_cert_consagracao')->references('id')->on('files');
+
+            $table->enum('situacao', ['ATIVO', 'INATIVO']);
+            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -37,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enderecos');
+        Schema::dropIfExists('consagracao');
     }
 };

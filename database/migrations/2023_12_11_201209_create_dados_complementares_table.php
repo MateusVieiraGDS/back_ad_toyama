@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('nome_mae', 75)->nullable();
             $table->string('ministerio_anterior', 75)->nullable();
 
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('membro_id')->unique();
+            $table->foreign('membro_id')->references('id')->on('membros');
 
             $table->timestamps();
             $table->softDeletes();

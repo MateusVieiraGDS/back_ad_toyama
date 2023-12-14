@@ -23,11 +23,7 @@ return new class extends Migration
             $table->string('cidade', 125);
             $table->char('uf', 2);
             $table->string('complemento', 125);
-            $table->char('cep', 8);
-
-
-            $table->unsignedBigInteger('dirigente_user_id')->nullable();
-            $table->foreign('dirigente_user_id')->references('id')->on('users');
+            $table->char('cep', 8);            
 
             $table->timestamps();
             $table->softDeletes();

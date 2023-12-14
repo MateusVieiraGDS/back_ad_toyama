@@ -17,15 +17,17 @@ return new class extends Migration
             $table->id();
 
             $table->date('data_casamento');
-            $table->string('cert_casamento_url', 125)->nullable();
 
-            $table->unsignedBigInteger('user_conjuge_1');
-            $table->foreign('user_conjuge_1')->references('id')->on('users');
+            $table->unsignedBigInteger('file_cert_casamento');
+            $table->foreign('file_cert_casamento')->references('id')->on('files');
 
-            $table->unsignedBigInteger('user_conjuge_2');
-            $table->foreign('user_conjuge_2')->references('id')->on('users');
+            $table->unsignedBigInteger('membro_conjuge_1');
+            $table->foreign('membro_conjuge_1')->references('id')->on('membros');
 
-            $table->unique(['user_conjuge_1', 'user_conjuge_2']);
+            $table->unsignedBigInteger('membro_conjuge_2');
+            $table->foreign('membro_conjuge_2')->references('id')->on('membros');
+
+            $table->unique(['membro_conjuge_1', 'membro_conjuge_2']);
 
             $table->timestamps();
             $table->softDeletes();

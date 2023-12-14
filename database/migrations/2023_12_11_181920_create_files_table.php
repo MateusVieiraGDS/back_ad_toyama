@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('telefones', function (Blueprint $table) {
-            $table->id();
+        Schema::create('files', function (Blueprint $table) {
+            $table->id();            
 
-            $table->string('numero', 11);
-            $table->enum('tipo', ['fixo', 'celular']);
-
-            $table->unsignedBigInteger('membro_id');
-            $table->foreign('membro_id')->references('id')->on('membros');
+            $table->string('pathname');
+            $table->string('mime');
+            $table->float('size');
 
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('telefones');
+        Schema::dropIfExists('files');
     }
 };
