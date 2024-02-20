@@ -25,6 +25,8 @@ return new class extends Migration
             $table->enum('estado_civil', ['SOLTEIRO', 'CASADO', 'SEPARADO', 'DIVORCIADO', 'VIUVO']);
             $table->string('naturalidade', 35);
             $table->char('uf', 2);
+            $table->enum('situacao', ['ATIVO', 'INATIVO']);
+            $table->enum('pendencia', ['SIM', 'NAO']);
 
             $table->unsignedBigInteger('file_cert_nascimento');
             $table->foreign('file_cert_nascimento')->references('id')->on('files');
@@ -43,9 +45,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('congregacao_id');
             $table->foreign('congregacao_id')->references('id')->on('congregacoes');
-
-            $table->unsignedBigInteger('situacao_id');
-            $table->foreign('situacao_id')->references('id')->on('situacoes');
 
             $table->timestamps();
             $table->softDeletes();
