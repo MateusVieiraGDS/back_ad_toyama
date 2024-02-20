@@ -25,7 +25,6 @@ class AdminSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('m_admin_2023_passwd'),
                 'role_id' => 1,
-                'remember_token' => Str::random(10),
                 'created_at' => $time,
                 'updated_at' => $time,
             ]

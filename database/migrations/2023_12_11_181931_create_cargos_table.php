@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nome', 75);
+            $table->string('nome', 75)->unique();
             $table->text('description', 350);
 
             $table->timestamps();

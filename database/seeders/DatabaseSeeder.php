@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CargosSeeder::class);
         $this->call(GruposSeeder::class);
         $this->call(SituacoesSeeder::class);
+        $this->call(StateSeeder::class);
+        $this->call(CitySeeder::class);
     }
 }

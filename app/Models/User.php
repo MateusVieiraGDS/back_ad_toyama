@@ -3,11 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Requests\UpdatePasswordRequest;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -22,6 +29,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'forgout_password_code',
+        'forgout_password_expires',
         'role_id'
     ];
 
@@ -69,5 +78,17 @@ class User extends Authenticatable implements JWTSubject
     public function Membro()
     {
         return $this->hasOne(Membro::class, 'user_id');
+    }
+
+
+    public function GenerateForgoutPasswordCode(): string
+    {
+        $code = rand(100000, 999999);
+        $this->update([
+            'forgout_password_code' => $code,
+            'forgout_password_expires' => now()->addMinutes(20)
+        ]);
+
+        return $code;
     }
 }

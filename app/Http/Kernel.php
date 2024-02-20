@@ -15,7 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
-        \App\Http\Middleware\LaravelApiKey::class,// Recusa conexões sem o header LAPI-KEY ou como LAPI-KEY errada. (LAPI-KEY consta no .env)
+        //\App\Http\Middleware\LaravelApiKey::class,// Recusa conexões sem o header LAPI-KEY ou como LAPI-KEY errada. (LAPI-KEY consta no .env)
         \App\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,

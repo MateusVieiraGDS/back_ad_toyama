@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('congregacoes', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nome', 75);
+            $table->string('nome', 75)->unique();
             $table->string('rua', 125);
             $table->integer('numero');
             $table->string('bairro', 125);
