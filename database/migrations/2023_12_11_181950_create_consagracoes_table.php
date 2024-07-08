@@ -18,14 +18,11 @@ return new class extends Migration
             $table->date('data_consagracao');
             $table->string('ministerio', 75)->nullable();
 
-            $table->unsignedBigInteger('membro_id');
-            $table->foreign('membro_id')->references('id')->on('membros');
+            $table->foreignId('membro_id')->references('id')->on('membros');
 
-            $table->unsignedBigInteger('cargo_id');
-            $table->foreign('cargo_id')->references('id')->on('cargos');            
+            $table->foreignId('cargo_id')->references('id')->on('cargos');            
 
-            $table->unsignedBigInteger('file_cert_consagracao')->nullable();
-            $table->foreign('file_cert_consagracao')->references('id')->on('files');
+            $table->foreignId('file_cert_consagracao')->nullable()->references('id')->on('files');
 
             $table->enum('situacao', ['ATIVO', 'INATIVO']);
             
@@ -41,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('consagracao');
+        Schema::dropIfExists('consagracoes');
     }
 };

@@ -30,16 +30,18 @@ class Membro extends Model
         'nasc',
         'sexo',
         'estado_civil',
-        'naturalidade',
-        'uf',
+        'rg_state_id',
+        'nat_state_id',
+        'nat_city_id',
         'user_id',
         'grupo_id',
         'congregacao_id',
-        'situacao_id',
+        'situacao',
+        'pendencia',
         'file_cert_nascimento',
         'file_doc_image',
         'file_foto'
-    ];    
+    ];
 
     public function User()
     {

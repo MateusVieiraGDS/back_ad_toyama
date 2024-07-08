@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {        
         Schema::table('congregacoes', function (Blueprint $table) {            
-            $table->unsignedBigInteger('dirigente_membro_id')->nullable()->after('cep');
-            $table->foreign('dirigente_membro_id')->references('id')->on('membros');
+            $table->foreignId('dirigente_membro_id')->nullable()->after('cep')->references('id')->on('membros');
         });
     }
 

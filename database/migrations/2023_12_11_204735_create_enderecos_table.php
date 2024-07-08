@@ -19,13 +19,12 @@ return new class extends Migration
             $table->string('rua', 125);
             $table->integer('numero');
             $table->string('bairro', 125);
-            $table->string('cidade', 125);
-            $table->char('uf', 2);
+            $table->foreignId('city_id')->references('id')->on('cities');
+            $table->foreignId('state_id')->references('id')->on('states');
             $table->string('complemento', 125);
             $table->char('cep', 8);
 
-            $table->unsignedBigInteger('membro_id');
-            $table->foreign('membro_id')->references('id')->on('membros');
+            $table->foreignId('membro_id')->references('id')->on('membros');
 
             $table->timestamps();
             $table->softDeletes();

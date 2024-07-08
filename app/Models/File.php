@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MembroSituacao extends Model
+class File extends Model
 {
     use HasFactory;
-    
-    protected $table = 'situacoes';
-
-    protected $hidden = [
-        'deleted_at'
-    ];
 
     protected $fillable = [
-        'nome',
-        'description'
-    ];
+        'pathname',
+        'mime',
+        'size'
+    ];    
 }

@@ -91,4 +91,13 @@ class User extends Authenticatable implements JWTSubject
 
         return $code;
     }
+    
+    public static function newUser(string $name, string $email, string $password, int $role_id){
+        return User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password),
+            'role_id' => $role_id
+        ]);
+    }
 }

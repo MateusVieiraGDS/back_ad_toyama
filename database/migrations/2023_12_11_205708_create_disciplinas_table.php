@@ -19,8 +19,7 @@ return new class extends Migration
             $table->date('dataExpiracao');
             $table->text('descricao', 350)->nullable();
 
-            $table->unsignedBigInteger('membro_id');
-            $table->foreign('membro_id')->references('id')->on('membros');
+            $table->foreignId('membro_id')->references('id')->on('membros');
 
             $table->timestamps();
             $table->softDeletes();

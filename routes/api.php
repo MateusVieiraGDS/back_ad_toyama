@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CadastroController;
 use App\Http\Controllers\Api\Utils\CargoController;
 use App\Http\Controllers\Api\Utils\CityStatesController;
 use App\Http\Controllers\Api\Utils\CongregacaoController;
@@ -29,6 +30,7 @@ Route::middleware('api')->group(function () {
     Route::get('Congregacoes', [CongregacaoController::class, 'GetAllCongregacoes']);
     Route::get('Cargos', [CargoController::class, 'GetAllCargos']);
     Route::get('Grupos', [GrupoController::class, 'GetAllGrupos']);
+    //Route::post('NovoCadastro', )
 
 
 
@@ -50,7 +52,9 @@ Route::middleware('api')->group(function () {
         //ROTAS AUTENTICADAS \/ - \/ - \/ - \/ - \/ - \/ - \/ - \/ - \/ - \/ - \/ - \/ - \/
 
         Route::get('logout', [AuthController::class, 'logout']);
-        Route::get('me', [AuthController::class, 'me']);        
+        Route::get('me', [AuthController::class, 'me']);   
+        
+        Route::post('NovoCadastro', [CadastroController::class, 'NewMember']);
 
         //ROTAS AUTENTICADAS /\ - /\ - /\ - /\ - /\ - /\ - /\ - /\ - /\ - /\ - /\ - /\ - /\
         //-------------------------------------------------------------------------------------

@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('numero', 11);
             $table->enum('tipo', ['fixo', 'celular']);
 
-            $table->unsignedBigInteger('membro_id');
-            $table->foreign('membro_id')->references('id')->on('membros');
+            $table->foreignId('membro_id')->references('id')->on('membros');
 
             $table->timestamps();
             $table->softDeletes();

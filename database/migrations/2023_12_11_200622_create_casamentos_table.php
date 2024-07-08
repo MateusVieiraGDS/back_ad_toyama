@@ -18,14 +18,15 @@ return new class extends Migration
 
             $table->date('data_casamento');
 
-            $table->unsignedBigInteger('file_cert_casamento');
-            $table->foreign('file_cert_casamento')->references('id')->on('files');
+            $table->foreignId('file_cert_casamento')->references('id')->on('files');
 
-            $table->unsignedBigInteger('membro_conjuge_1');
-            $table->foreign('membro_conjuge_1')->references('id')->on('membros');
+            $table->foreignId('file_cert_divorcio')->references('id')->on('files');
 
-            $table->unsignedBigInteger('membro_conjuge_2');
-            $table->foreign('membro_conjuge_2')->references('id')->on('membros');
+            $table->foreignId('file_cert_obito')->references('id')->on('files');
+
+            $table->foreignId('membro_conjuge_1')->references('id')->on('membros');
+
+            $table->foreignId('membro_conjuge_2')->references('id')->on('membros');
 
             $table->unique(['membro_conjuge_1', 'membro_conjuge_2']);
 

@@ -20,8 +20,7 @@ return new class extends Migration
             $table->char('forgout_password_code', 32)->nullable();
             $table->dateTime('forgout_password_expires')->nullable();
 
-            $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreignId('role_id')->references('id')->on('roles');
             
             $table->timestamps();
         });
