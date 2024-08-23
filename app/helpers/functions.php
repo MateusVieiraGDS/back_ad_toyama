@@ -1,5 +1,8 @@
 <?php
 
+
+namespace App\Helpers;
+
 /**
  * Remove caracteres não numéricos de uma string.
  *

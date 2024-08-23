@@ -25,6 +25,7 @@ class Membro extends Model
     ];
 
     protected $fillable = [
+        'uuid',
         'rg',
         'cpf',
         'nasc',

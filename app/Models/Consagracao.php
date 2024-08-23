@@ -20,7 +20,7 @@ class Consagracao extends Model
     protected $fillable = [
         'data_consagracao',
         'ministerio',
-        'user_id',
+        'membro_id',
         'cargo_id',
         'file_cert_consagracao'
     ];

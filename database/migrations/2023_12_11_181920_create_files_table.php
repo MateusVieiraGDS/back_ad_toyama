@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('pathname');
             $table->string('mime');
-            $table->float('size');
+            $table->integer('size');
 
             $table->timestamps();
             $table->softDeletes();

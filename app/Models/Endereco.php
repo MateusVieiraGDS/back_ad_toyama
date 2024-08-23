@@ -19,10 +19,20 @@ class Endereco extends Model
         'rua',
         'numero',
         'bairro',
-        'cidade',
-        'uf',
+        'city_id',
+        'state_id',
         'complemento',
         'cep',
         'membro_id'
     ];
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
 }

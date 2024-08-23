@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('bairro', 125);
             $table->foreignId('city_id')->references('id')->on('cities');
             $table->foreignId('state_id')->references('id')->on('states');
-            $table->string('complemento', 125);
+            $table->string('complemento', 125)->nullable();
             $table->char('cep', 8);
 
             $table->foreignId('membro_id')->references('id')->on('membros');
